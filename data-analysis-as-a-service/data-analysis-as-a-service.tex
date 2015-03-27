@@ -7,6 +7,7 @@
 \onehalfspacing
 \usepackage{babel}
 \usepackage{csquotes}
+\SetBlockThreshold{2}
 \usepackage[sorting=nyt,style=apa]{biblatex}
 \DeclareLanguageMapping{british}{british-apa}
 \addbibresource{../references.bib}
@@ -15,18 +16,24 @@
 \DeclareGraphicsExtensions{.jpg,.png}
 \graphicspath{{./images/}}
 \usepackage{float}
+\usepackage{url}
+
+\title{Data Analysis as a Service: an infrastructure for storing and analysing the Internet of Things}
+\author{Martin Lehmann}
+\date{\today}
 
 \begin{document}
 
 \includepdf{frontpage-wact}
 
-\input{description}
+\maketitle
 
+\input{abstract}
 \input{introduction}
 \input{literature-review}
+\input{the-artifact}
 \input{discussion}
 \input{conclusion}
 
 \printbibliography
-
 \end{document}
