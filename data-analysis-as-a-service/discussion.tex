@@ -1,15 +1,18 @@
 \section{Discussion: experiences from developing Data Analysis as a Service}
-\begin{itemize}
-    \item REST easy to work with on all sides (except real-time).
+Unsurprisingly, many design decisions had to be made as we applied the Internet and Web of Things to a real-world application with a clearly defined use case such as Data Analysis as a Service (DAaaS). While frameworks for connecting things to the internet, machine to machine communication, data storage, and data analysis as plentiful, it proved impossible to apply these frameworks and protocol stacks to the application without modifications. In short, the development time can be greatly reduced by utilising tools which almost fit the use case, and customise what already exists. This experience differs from the main proposition in \textcite{palattella-accettura-vilajosana-watteyne-gieco-boggia-dohler:standardized-protocol-stack-for-the-internet-of-important-things:2012}, whose introduced IoT protocol stack should have been the best fit.
 
-    \blockquote[{\cite[100]{uckelmann-harrison-michahelles:architecting-the-internet-of-things:2011}}]{The central idea of REST revolves around the notion of a resource as \textit{any component of an application that is worth being uniquely identified and linked to}}.
+A key experience from the development process is that development time can be greatly reduced by using tools that already exists -- in DAaaS's case, Meteor with MongoDB for storage, and REST and DDP\footnote{\url{https://www.meteor.com/ddp}} as communication protocols or styles proved to be very effective tools for rapid prototyping. It should be noted that \textit{only} REST was used for providing data \textit{to} the application, as per \textcite{uckelmann-harrison-michahelles:architecting-the-internet-of-things:2011}. The prototype did not require two-way machine-to-machine communication, so COaP was not relevant to this system.
 
-    \item DDP more difficult (but asteroid simplifies everything greatly in JS) \url{https://www.meteor.com/ddp} \url{https://github.com/mondora/asteroid}
-    \item All in all, good protocols proved very helpful/important
-    \item Security is still a big issue
-    \item Privacy is a potential issue
-    \item No error handling
-    \item Did not do any big data analysis
-    \item Treating the providers and consumers of the Internet of Things as any other client (all client-server communication is M2M(?)) proved very simple and helpful
-    \item HTTP/2 will be an interesting player once released, as it will provide two-way communication and several requests over the same connection –. 
-\end{itemize}
+An obvious downside of this approach is that a framework (like Meteor) may impose requirements to other dependencies in the application. In DAaaS, the main issue was that Meteor only supports the document database MongoDB\footnote{\url{https://www.mongodb.org/}} out of the box. There are several other stores better suited than MongoDB to store timeseries data, which was expected to be stored in DSaaS. Possibly better alternatives include TempoIQ\footnote{\url{https://www.tempoiq.com/}} and InfluxDB\footnote{\url{http://influxdb.com/}}. Being required to use MongoDB for storage required a custom data structure to achieve acceptable performance, but that is outside the scope of this article.
+
+Another important point to make about using established protocols, even if they (like Meteor's DDP) are not widely used outside of a small community, it may be easy to find third party libraries to help speed up development. For example, the real-time consumer graph used the library \textit{asteroid}\footnote{\url{https://github.com/mondora/asteroid}}. By defining a custom protocol with WebSockets, all communication must have been implemented by hand.
+
+As long as there are not enough good all-purpose reference implementations with the proposed frameworks and protocol stacks, building something based on existing and well-defined protocols is easier. For rapid prototyping of a system, it seems best to prefer well-defined protocols and architectural styles like REST, and try to use existing frameworks for both client- and server-side applications. For commercial products, however, and especially if one aims to deliver several variations of the same product, service, or platform, exploring and using protocol stacks and frameworks developed specifically for the Internet of Things may be the best fit.
+
+Several aspects of building a commercial application for actual use have been blatantly ignored in the development of DAaaS. Examples include security in both providing and consuming data; privacy, which has not been considered whatsoever (and rightfully so: the platform only stores and displays data in a custom fashion); and no error handling is implemented: if anything unexpected happens, the system will not do anything to restore state or shut down gracefully. These are all considerations to make which may differ from the regular Web application when introducing the aspect of Internet and Web of things.
+
+No actual (big data) analysis of the data was performed by the prototype, leaving potential issues with this type of data unexplored by this article.
+
+However, the possibly most important experience from developing the DSaaS application is that handling providers and consumers of the Internet and Web of Things just like any other type of client in the business logic of the application is tremendously helpful: if data from things needs to be transformed to fit a certain structure, then it should likely be transformed in the communication layer of the application before ever reaching the business logic.
+
+As a final remark, HTTP/2\footnote{\url{https://tools.ietf.org/html/draft-ietf-httpbis-http2-17}} is on its way, and will certainly be an interesting player once released, allowing two-way communication and several asynchronous requests over the same connection. This may impact the need for COaP and WoT performance, create some disturbance in the effort to standardise WoT protocols, and certainly improve performance on the Web in general. 

@@ -1,16 +1,6 @@
 \section{Conclusion}
-\begin{itemize}
-  \item Development of the IoT/WoT together with the "regular" web is going to be important
-  \item Standards for communication that comply with the current standards of today's Web (and possibly some new ones like COaP) are going to play a major role. Manufacturers, developers, and academics alike should work together towards properly standardising both real-time and after-the-fact communication (in our case DDP and REST, respectively). COaP is a step in the right direction, but components of the Internet of Things may not require two-way communication (like COaP provides) and will thus be held back by this overhead.
-  \item Development of a full-stack application for the IoT is 
-  \item More focus must be directed at development of full-stack applications
-  \begin{itemize}
-      \item DAaaS is full-stack JavaScript (which is still not very common)
-      \item Relational databases should be considered
-      \item Security is another huge issue
-      \item Privacy has not been touched – DAaaS is a simple proof of concept on connecting devices to a central server (REST/HTTP POST) and providing means of analysing the data in real-time (DDP) and retrospect (REST/HTTP GET)
-  \end{itemize}
-  \item HTTP/2 may be an important player in defining the IoT/WoT, and especially when it comes to developing the IoT/WoT together with the Web.
-\end{itemize}
+We have seen that the current body of research on the Internet and Web of Things agrees that standardisation, full-stack research-oriented implementations, technology, and security are among the most important areas to look into in the future. Data Analysis as a Service attempts to address the first two of these issues, and is a small step on the way to bridging the gap. More focus must be directed at full-stack implementations of Internet and Web of Things-oriented applicatons, with special regard to separate use cases and domains. In particular, it should be interesting to see what matters in development of commercial products. 
 
-We absolutely need to standardise protocols in a good way, and we certainly need to let the Internet and Web of Things evolve together with the actual Web.
+Utilising existing Web standards instead of developing the Internet and Web of Things as its own technology is going to be an important part of the process of simplifying the Internet of Things. We will probably require some new protocols as well -- CoAP is a great example of this -- but developing the WoT with the Web in mind will be crucial. At present, business needs and proposed technology, frameworks, and protocols are in conflict -- but as more example implementations become available, this will hopefully change. Standardising protocols instead of having manufacturers implement custom means of communication is key to simplifying the Internet and Web of Things.
+
+Security, privacy, cost, and maintenance of a distributed network such as the Internet of Things are still major considerations to make, and are certainly directions in which the academic community should go in the near future.
