@@ -1,0 +1,24 @@
+\section{The artifact: Data Analysis as a Service (DAaaS)}
+This section considers the artifact developed in the writing of this article: Data Analysis as a Service (DAaaS).
+\subsection{Brief description of the implementation}
+\begin{itemize}
+    \item DAaaS is a full-stack application with several example integrations.
+    \item Core application:
+    \begin{itemize}
+        \item Meteor (JS) application built around MongoDB for time series (could/should have used different)
+        \item REST endpoints everywhere for simplicity (refer to book Architecting the Internet of Things) – Both provider and consumer endpoints (for pushing and analysing data)
+        \item Realtime output endpoints (DDP because there is no de facto standard yet and Meteor provides DDP support out of the box)
+    \end{itemize}
+    \item Data providers:
+    \begin{itemize}
+        \item Native Android application sending light sensor data (with simple extendability)
+        \item Cross-platform mobile app written in Ionic to track toilet visits (extremely simple proof of concept)
+        \item Spark Core (\url{http://spark.io}) for any sensor that can be connected to it (e.g., temperature, light, humidity, whatever) with polling rate (e.g., 500 ms between data push)
+    \end{itemize}
+    \item Data consumers:
+    \begin{itemize}
+        \item Realtime analytics dashboard (just connect via DDP)
+        \item REST data providing endpoints
+    \end{itemize}
+    \item Security is not considered in this application: a simple random token is the only used "authentication", and this is sent in the URL when launching dashboard (refer to Medium.com tragedy)
+\end{itemize}

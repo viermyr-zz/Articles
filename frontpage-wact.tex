@@ -1,0 +1,27 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\definecolor{headerColor}{RGB}{0,176,240}
+
+
+\begin{document}
+
+
+\begin{tikzpicture}[remember picture, overlay]
+    \draw[fill={headerColor}] (-5.25cm,-3cm) rectangle (16.35cm,15cm);
+    
+    \node [right] at (-30mm, 0cm) { Assignment };
+    \node [right] at (-30mm, -1cm) { Master of Applied Computer Science };
+\end{tikzpicture}
+%
+%\begin{tikzpicture}[remember picture, overlay]
+%    % Define size and default background color of card:
+%    \useasboundingbox [fill={headerColor}] (0,0) rectangle (210mm,82.3mm);
+%    % Background of last third
+%    \fill [red] (60mm,0mm) rectangle (90mm,52mm);
+%    % Place the text freely. You can also place `tabulars` or `\parbox`es
+%    \node [right] at (10mm,30mm) {John Doe};
+%    \node [right] at (10mm,25mm) {Example Cooperation};
+%    \node [right] at (10mm,20mm) {John.Doe@example.com};
+%\end{tikzpicture}
+\end{document}

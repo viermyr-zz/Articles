@@ -1,0 +1,15 @@
+\section{Discussion: experiences from developing Data Analysis as a Service}
+\begin{itemize}
+    \item REST easy to work with on all sides (except real-time). As     \textcite{uckelmann-harrison-michahelles:architecting-the-internet-of-things:2011} put it:
+
+    \blockquote{The central idea of REST revolves around the notion of a resource as \textit{any component of an application that is worth being uniquely identified and linked to}. On the Web, the identification of resources relies on Uniform Resource Identifiers (URIs), and representations retrieved through resource interactions contain links to other resources, so that applications can follow links through an interconnected web of resources. Clients of RESTful services are supposed to follow these links, just like one browses Web pages, in order to find resources to interact with. This allows clients to "explore" a service simply by browsing it, and in many cases, services will use a variety of link types to establish different relationships between resources.}
+
+    \item DDP more difficult (but asteroid simplifies everything greatly in JS) \url{https://www.meteor.com/ddp} \url{https://github.com/mondora/asteroid}
+    \item All in all, good protocols proved very helpful/important
+    \item Security is still a big issue
+    \item Privacy is a potential issue
+    \item No error handling
+    \item Did not do any big data analysis
+    \item Treating the providers and consumers of the Internet of Things as any other client (all client-server communication is M2M(?)) proved very simple and helpful
+    \item 
+\end{itemize}
