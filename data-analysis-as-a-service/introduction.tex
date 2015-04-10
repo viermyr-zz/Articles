@@ -1,10 +1,24 @@
 \section{Introduction}
+The Internet of Things (IoT) is perhaps the fastest emerging technology trend at the present time. The IoT technologies and applications are still in their infancy \autocite{xu-he-li:internet-of-things-in-industries-a-survery:2014}, and so the academic community must thoroughly address the area.
+
+Although "IoT" was initially meant to describe a network of Radio-Frequency ID-enabled devices, it has since been expanded to the following:
+
+\blockquote[{Kranenburg, 2007 cited in \citeauthor{xu-he-li:internet-of-things-in-industries-a-survery:2014}, \citeyear[1]{xu-he-li:internet-of-things-in-industries-a-survery:2014}}]{a dynamic global network infrastructure with selfconfiguring capabilities based on standard and interoperable communication protocols where physical and virtual ‘Things’ have identities, physical attributes, and virtual personalities and use intelligent interfaces, and are seamlessly integrated into the information network}.
+
+It becomes clear that the internet of things indeed encompasses all devices with a sensor, but there is also a second implication: the humongous number of data points that will inevitably be collected is of no use to anyone unless it is processed. The definition also presents us with several implicit challenges:
 
 \begin{itemize}
-    \item The Internet of Things (IoT) is perhaps the fastest emerging technology trend at the present time. The IoT technologies and applications are still in their infancy \autocite{xu-he-li:internet-of-things-in-industries-a-survery:2014}, and so the academic community must thoroughly address the area. This article...
-    \item introduces and describes the most important concepts and areas to address in the field of IoT,
+  \item security in a distributed system (pre-shared keys aka. passwords? asymmetric encryption with public/private keys?),
+  \item privacy (as companies start tracking employees, malls start tracking customers, and so on), and
+  \item distribution and maintenance of the actual devices
+\end{itemize}
+
+
+
+This article\dots
+\begin{itemize}
     \item takes a look at the state of the art in the form of a brief literature review (considering mostly other literature reviews and survey papers) and a brief look at papers relevant to building a full/stack application designed for the IoT,
-    \item presents the major architectural choices in the development of the research artifact (Data Analysis as a Service - DAaaS) with an integration-oriented focus,
+    \item presents the major architectural choices in the development of the research artefact (Data Analysis as a Service - DAaaS) with an integration-oriented focus,
     \item reviews the major untouched areas of interest (mainly security, but also integrations for two-way 2nd and 3rd party integrations),
     \item and finally concludes with a summary of the results and experiences made throughout the rapid development of the prototype and how it fits into the current research on the field of IoT.
 \end{itemize}
