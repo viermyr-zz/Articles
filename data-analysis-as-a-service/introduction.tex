@@ -1,24 +1,20 @@
-\section{Introduction}
-The Internet of Things (IoT) is perhaps the fastest emerging technology trend at the present time. The IoT technologies and applications are still in their infancy \autocite{xu-he-li:internet-of-things-in-industries-a-survery:2014}, and so the academic community must thoroughly address the area.
-
-Although "IoT" was initially meant to describe a network of Radio-Frequency ID-enabled devices, it has since been expanded to the following:
+\section{Introduction and background}
+The Internet of Things (IoT) is perhaps the fastest emerging technology trend of the present time. The IoT technologies and applications are still in their infancy \autocite{xu-he-li:internet-of-things-in-industries-a-survery:2014}, and so the academic community must thoroughly address the area. Although "IoT" was initially meant to describe a network of Radio-Frequency ID-enabled devices, it has since been expanded to the following:
 
 \blockquote[{Kranenburg, 2007 cited in \citeauthor{xu-he-li:internet-of-things-in-industries-a-survery:2014}, \citeyear[1]{xu-he-li:internet-of-things-in-industries-a-survery:2014}}]{a dynamic global network infrastructure with selfconfiguring capabilities based on standard and interoperable communication protocols where physical and virtual ‘Things’ have identities, physical attributes, and virtual personalities and use intelligent interfaces, and are seamlessly integrated into the information network}.
 
-It becomes clear that the internet of things indeed encompasses all devices with a sensor, but there is also a second implication: the humongous number of data points that will inevitably be collected is of no use to anyone unless it is processed. The definition also presents us with several implicit challenges:
+It becomes clear that the internet of things indeed encompasses all devices with a sensor, but there is also a second implication: the humongous number of data points that will inevitably be collected is of no use to anyone unless it is processed. The definition also presents us with several implicit challenges, including (but not limited to):
 
 \begin{itemize}
-  \item security in a distributed system (pre-shared keys aka. passwords? asymmetric encryption with public/private keys?),
-  \item privacy (as companies start tracking employees, malls start tracking customers, and so on), and
-  \item distribution and maintenance of the actual devices
+  \item privacy (as companies start tracking employees, shopping centres start tracking customers, and so on),
+  \item distribution and maintenance of the actual devices, and
+  \item security concerns in a distributed system (pre-shared keys aka. passwords? asymmetric encryption with public/private keys?)
 \end{itemize}
 
+These concerns must certainly be tackled from different angles in later articles, but are not within the scope of this article.
 
+Furthermore, \textit{standards} are a real concern. This is described in \textcite{palattella-accettura-vilajosana-watteyne-gieco-boggia-dohler:standardized-protocol-stack-for-the-internet-of-important-things:2012}, which emphasises emerging industry alliances and IEEE/IETF working groups as the key to success.
 
-This article\dots
-\begin{itemize}
-    \item takes a look at the state of the art in the form of a brief literature review (considering mostly other literature reviews and survey papers) and a brief look at papers relevant to building a full/stack application designed for the IoT,
-    \item presents the major architectural choices in the development of the research artefact (Data Analysis as a Service - DAaaS) with an integration-oriented focus,
-    \item reviews the major untouched areas of interest (mainly security, but also integrations for two-way 2nd and 3rd party integrations),
-    \item and finally concludes with a summary of the results and experiences made throughout the rapid development of the prototype and how it fits into the current research on the field of IoT.
-\end{itemize}
+Finally, the pre-eminent concern of this article is the gap of knowledge with regard to modelling and implementing complete IoT-oriented applications, as described by \textcite{paganelli-turchi-guili:a-web-of-things-framework-for-restful-applications-and-its-experimentation-in-a-smart-city}. 
+
+This article first revisits the current state of research on the field of IoT. It then presents an architectural model and proof-of-concept implementation of a full-stack IoT-oriented application which accepts, stores, and provides access to the data in addition to subscription to real-time feeds for new data points. Third, it compares the experiences from modelling and developing the application to the existing research. Lastly, the most important lessons are highlighted and briefly discussed.
