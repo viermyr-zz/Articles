@@ -1,0 +1,34 @@
+\documentclass[british]{article}
+\usepackage{pdfpages}
+\usepackage{fullpage}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{babel}
+\usepackage{csquotes}
+\SetBlockThreshold{2}
+\usepackage[sorting=nyt,style=apa]{biblatex}
+\DeclareLanguageMapping{british}{british-apa}
+\addbibresource{../references.bib}
+\setlength\bibitemsep{1.5\itemsep}
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.jpg,.png}
+\graphicspath{{./images/}}
+\usepackage{float}
+\usepackage{url}
+
+\title{Data Analysis as a Service: an infrastructure for storing and analysing the Internet of Things}
+\author{Martin Lehmann}
+\date{\today}
+
+\begin{document}
+
+\includepdf[draft]{frontpage-wact}
+
+\maketitle
+
+\input{introduction}
+
+\printbibliography
+\end{document}
