@@ -14,6 +14,8 @@ Type: NUI, (not really) TUI, no VR/AR/MR. Obviously not a CLI because it has a G
 
 Form factor: designed only for iPad 1/2/Mini, but can easily write responsive CSS to support more types of devices (relevant for touch tables, smart boards, touch walls, smartphones). Hopefully keyboard is connected. Designed to be used when sitting down, although can be just opened (not interacted with) to grok the project's state on the move. Designed to be interacted with only when necessary and looked at when information is required
 
+Could have built something native for better performance and complete control of the environment, but takes far too much time and was beside the concept we set out to prove.
+
 \subsection{Sketches}
 
 % TODO: hack something together in Balsamiq and/or Photoshop to show that this was well planned out
@@ -34,4 +36,8 @@ No specific SDKs have been used, although several frameworks are used:
   \item Potential: JWT (or just cookies): save data inside the token
 \end{itemize}
 
-Could have built something native for better performance and complete control of the environment, but takes far too much time and was beside the concept we set out to prove.
+\subsection{Known bugs}
+
+\begin{itemize}
+  \item It is nearly impossible to grab the bottommost issue that lies beneath the "fade out" overlay over the swimlane in a full swimlane
+\end{itemize}
