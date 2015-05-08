@@ -86,34 +86,43 @@ Figure \ref{figure:meaningful-none-doing} shows the feedback in response to a sw
 
 Figure \ref{figure:meaningful-card-moving} shows a card being moved, together with a hint indicating where the issue will land if released. The hinting always finds the closest position and indicates this position. Again, an escape sequence would be very useful here -- but Piaget's property of \textit{negation} is met.
 
+\begin{figure}[H]
+    \centerline{\includegraphics[scale=0.4]{images/nuissues-screenshots/07-invalid-issue-flagged}}
+    \caption{Card flagged for deletion}
+    \label{figure:meaningful-card-flagged}
+\end{figure}
 
+Figure \ref{figure:meaningful-card-flagged} shows a card that is flagged for deletion. The card in its entirety is marked red to indicate to the user that a dangerous action is about to be performed.
 
-\begin{itemize}
-  \item Issue that is marked for deletion (red: \textbf{occlusion}) 
-  \item Issue that is being edited (title)
-  \item Hint to more content
-\end{itemize}
+\begin{figure}[H]
+    \centerline{\includegraphics[scale=0.4]{images/nuissues-screenshots/09-editing-issue-title}}
+    \caption{Card whose title is being edited}
+    \label{figure:meaningful-card-editing}
+\end{figure}
 
+Figure \ref{figure:meaningful-card-editing} shows a card whose title is being edited inline. Gray text is used to indicate that it disabled (i.e., not a control), while black text can be interacted with unless it is a heading.
 
-Card deleted (realtime updates of the board to see what is going on?), but mostly "the time is X and we have Y tasks left to complete", or "we have way too many tasks in progress, please fix" (this falls under valuable outcome)
+\begin{figure}[H]
+    \centerline{\includegraphics[scale=0.4]{images/nuissues-screenshots/01-default-all-swimlanes}}
+    \caption{Default view showing fadeout effect at the bottom of swimlanes}
+    \label{figure:meaningful-swimlane-fadeout}
+\end{figure}
 
-Potential: see who is assigned to the issue
+Figure \ref{figure:meaningful-swimlane-fadeout} demonstrates the fadeout effect at the bottom of each swimlane, which indicates that there is more content to see and that the user can scroll down.
 
-Potential: see how long tasks are estimated to take, and prioritise based on that.
+Potential new features can include assigning issues to users, estimating how long tasks will take to complete, and logging work time on each issue.
 
-Potential for different input:
-\begin{itemize}
-  \item Not using a mouse (but there's nothing in the way of using the app in a browser)
-  \item Not using a stylus (although recognising a stylus and allowing in-place drawing of "attachments" for issues would be interesting to look into)
-\end{itemize}
+The application is optimised for touch, but recognising a stylus as an input source would be interesting to for example immediately enter a "sketch attachment" mode where the user can draw a picture which is automatically uploaded to the selected issue.
 
-\subsection{Valueable outcomes}
+\subsection{Valuable outcomes}
+
+There are several valuable outcomes from using (a future version of) NUIssues.
 
 \subsubsection{Short-term valuable outcome}
 
-Immediately see and update the state of the project
+NUIssues in its current state allows anyone to immediately grok the status of the project. If the user wants, they can also update the state of the project in a way that reflects changes for the rest of the team on the move, using a tablet computer.
 
-Extremely simple interaction optimised for doing when travelling, can be used for walking, immediate overview of the entire project
+While some other applications (such as Trello) have mobile applications for managing lists, they generally are not very customisable and lack features like for instance time logging. This should be a priority in a future version of NUIssues.
 
 \subsubsection{Long-term valuable outcome}
 
