@@ -45,9 +45,7 @@ The interface is designed only for Apple iPad 1/2/Mini, but one may easily write
 
 If the user intends to edit textual content (only the title in NUIssues), it would be preferable to have an external keyboard. As reflected upon in the introduction, a keyboard is by far the most effective tool to write precise text in a computer system. An on-screen software keyboard will work almost as well, but overlaps almost all of the issues. Thus, the application is unusable for anything other than finishing text input and saving changes when in the editing state.
 
-%everything below this point is a draft
-
-NUIssues \textbf{only} supports \textit{touch} as natural input. While tracking changes on a user's skin seems unrelated, there are several other to explore in future research. Gestures (e.g., with a kinect in a meeting room) is interesting, speech is unrelated unless the audience has no arms/ability to touch (disabled), gaze tracking is cool but unnecessary unless same as speech recognition, brain machine interface only relevant for heavily disabled users who are probably not in need of an issue tracker)
+% everything below this point is a draft
 
 Motion controllers, gaze trackers, and brain trackers may be less interesting to use here (although Atlassian has been able to use brain power to move issues between swimlanes at a hackathon – or so they say).
 
@@ -56,10 +54,6 @@ Could have built something native for better performance and complete control of
 Touch input: Fat fingers: no buttons (only large areas), large margins, everything can be dragged (no specific drag handles), may cause trouble with scrolling
 
 While not explicitly expressed, one may assume that the user's model of the system identifies issues higher up (with a lower index) as more important. After all, the grid layout imposes a hierachical style on the application. This interpretation is, however, left to the user.
-
-
-
-
 
 The system is single-user, so inter-user task coupling has not been explicitly addressed, but it is possible to evolve the system to other forms of interfaces like touch walls or touch tables (or even just real-time updates for a project).
 
@@ -87,9 +81,9 @@ Second, there is a \textit{conceptual model}, which is a very accurate psycholog
 
 Fourth, the target system projects a \textit{system image}, which is the implementation of the the conceptual model. This is the basis for the next element: the user's mental model of the system.
 
-Fifth, the \textit{user} immediately builds a mental model of the system for 
+Fifth, the \textit{user} immediately builds a mental model of the system of the system based on the \textit{system image}. This model is the basis for what the user expects the system to be able to do, mostly based on previous experience with similar systems but only based on the hints given by the application.
 
-Mental models: HCI Design: target system (duh), conceptual model (issue tracker with touch interface which supports only adding and moving/reordering issues), system image (the materialised version of the designer's mental model of the system), user's mental model of the system image (hopefully very close, but discuss this), designer's user model (hopefully very close, draw contrasts and use same metaphors/stuff as Trello, JIRA, Asana, ding.io, ServiceNow, Symfoni Notes, other issue trackers users have already used, and simple post-it note setups)
+Last, the \textit{designer has a mental model of the user's model}, in which the designer attempts to guess what the user's mental model of the system image will be like. This model is built on the target audience's expected background, and can be built by considering similar applications the user can be expected to have interacted with in the past. In this case, an obvious system is that of sticky notes and checklists to track tasks, which almost everyone has used at some point. Thus, these graphical representations of issues may be used as metaphors in the system. Further, the user can have come across several digital issue trackers optimised for web like \footnote{\url{https://trello.com}}, Atlassian JIRA\footnote{\url{https://jira.atlassian.com/secure/Dashboard.jspa}}, Ding\footnote{\url{https://ding.io}}, ServiceNow\footnote{\url{http://www.servicenow.com/}}, and IBM Notes\footnote{\url{http://www-03.ibm.com/software/products/en/ibmnotes}}.
 
 \subsection{Behaviour models}
 
