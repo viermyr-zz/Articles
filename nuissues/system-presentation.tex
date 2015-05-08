@@ -103,9 +103,70 @@ No Software Development Kits (SDKs) specific to Natural User Interface design ha
   \item MongoDB is the document database used to store issues
 \end{itemize}
 
+The front-end and back-end projects communicate using the Hypertext Transfer Protocol (HTTP) following the architectural style REpresentational State Transfer (REST). A sample implementation of creating an issue is implemented as follows:
+
+Client-side service: \textbf{\textit{nuissues/angular/js/issues/issues.service.js}}
+\begin{lstlisting}
+service.create = function(issue) {
+    return $http.post('/api/issues', issue);
+};
+\end{lstlisting}
+
+Server-side controller exposing a REST endpoint: at HTTP POST <host>/api/issues\textbf{\textit{nuissues/node/controllers/issues.js}}
+\begin{lstlisting}
+router.post('/', function(req, res) {
+	var issue = new Issue(req.body);
+	issue.status = 'todo';
+	issue.save(function() {
+		return res.status(201).json(issue);
+	});
+});
+\end{lstlisting}
+
+Using the \texttt{ng-sortable}\footnote{\url{http://ngmodules.org/modules/ng-sortable}} module for AngularJS, the code for generating swimlanes in its entirety looks as follows where \texttt{validStatuses}, and \texttt{issues}, \texttt{swimlaneSortOptions} are defined by the page's AngularJS controller:
+
+\begin{lstlisting}
+<span id="board" ng-repeat="status in validStatuses">
+    <div class="jumbotron swimlane">
+        <h2>{{status}}</h2>
+        <p ng-if="issues[status].length === 0">No issues!</p>
+        <div as-sortable="swimlaneSortOptions" ng-model="issues[status]" class="pre-scrollable issue-list-container">
+            <div class="issue-container" as-sortable-item ng-repeat="issue in issues[status]">
+                <div as-sortable-item-handle ng-class="{issue: true, deleted: issue.deleted}">
+                    <input class="title no-border" ng-model="issue.title" ng-change="issue.changed = true" ng-blur="issue.changed = true"/>
+                    <span class="controls-delete">
+                        <a ng-if="!issue.deleted" class="delete" href="javascript:void(0)" ng-click="issue.deleted = true">x</a>
+                        <a ng-if="issue.deleted" class="restore" href="javascript:void(0)" ng-click="deleteIssue(issue)">✓</a>
+                    </span>
+                    <div class="created static">{{issue.created | date: 'short'}}</div>
+                    <!-- <a ng-if="issue.changed" href="javascript:void(0)" class="control-update" ng-click="updateIssue(issue)">Save changes</a> -->
+                    <a href="javascript:void(0)" class="control-update" ng-click="updateIssue(issue)">Save changes</a>
+                </div>
+            </div>
+        </div>
+        <div id="bottom-fade"></div>
+    </div>
+</span>
+\end{lstlisting}
+
+This code also shows the HTML implementation of the fade-out effect at the bottom of each swimlane, which is simply a \texttt{div} element styled with CSS as follows, assuming the file \texttt{bottom-fade.png} exists in the same directory as the CSS file (technique inspired by \url{https://css-tricks.com/examples/FadeOutBottom/}):
+
+\begin{lstlisting}
+#bottom-fade {
+	width: 600px;
+	height: 200px;
+	z-index: 99;
+	position: fixed;
+	bottom: -20px;
+	background: url("bottom-fade.png") bottom center no-repeat;
+}
+\end{lstlisting}
+
 The live application is hosted on Heroku\footnote{\url{https://heroku.com}}, which is a free host for Node.js (and other) projects.
 
 \subsection{Known bugs in the current implementation}
+
+There is at present time one known bug in the prototype implementation:
 
 \begin{itemize}
   \item It is nearly impossible to grab the bottommost issue that lies beneath the "fade out" overlay over the swimlane in a full swimlane
