@@ -18,18 +18,14 @@ As usual, marketing rhetoric is ahead of reality.
 
 Natural User Interfaces are, indeed, a new way to interact with Graphical User Interfaces (GUIs), and not something completely new. However, as we move away from pen and mouse and into the domain of touch sensitivity, speech recognition, and several other "natural" interface types, we must also update the GUIs to suit the task at hand and the input type of choice.
 
-For example, a tablet with a screen surface sensitive to both the natural interface of touch and the Tangible User Interface (TUI) of stylus (pen) should immediately be able to differentiate between the two input types, because a user normally only wants to use the stylus for tasks fine-grained than what can be done just as efficiently by touching the screen with fingers: for example, sketching or annotating a document.
+For example, a tablet with a screen surface sensitive to both the natural interface of touch and the Tangible User Interface (TUI) \autocite{ishii-ullmer:tangible-bits-towards-seamless-interfaces-between-people-bits-and-atoms:1997} of stylus (pen) should immediately be able to differentiate between the two input types, because a user normally only wants to use the stylus for tasks fine-grained than what can be done just as efficiently by touching the screen with fingers: for example, sketching or annotating a document.
 
 When it has been established that NUIs are new ways of interacting with GUIs and thus get all of the benefits (and restrictions) of the GUI's exploratory nature, we must of course learn from the GUI design and how we have interacted with them before to best design natural interaction experiences -- but looking to the past is far from enough. New guidelines must be written and revised before we can determine a common understanding of how natural user interfaces should be used. After all, \textcite{norman:natural-user-interfaces-are-not-natural:2010} calls them \textit{not natural}.
 
-Typically, NUIs respond to everyday, natural interactions such as touch and speech, instead of forcing the user into using a Tangible User Interface (TUI).
+% TODO: Everything below this comment is drafty
 
-Technical challenge: recognise different forms of input (e.g., pen vs. mouse vs. touch, multitouch) and prompt/respond differently/properly to type of input (especially separating between different TUIs like mouse and pen -- you only want to sketch/annotate with a pen). See Photoshop as example for this (pressure recognition, etc.)
+This report looks at an issue (task) tracker designed with guidelines and best practises for Natural User Interfaces in mind.  The board consists of three simple lists: \textbf{todo}, \textbf{doing}, and \textbf{done}. The user can interact with existing tasks and drag them between the lists.
 
-Have designed a very commonly used system: an issue (task) tracker. Focus has been on optimising the actual board interaction for touch, as this is the natural interface type that should be expected to best optimise the key flows in the application (moving tasks back and forth between swimlanes as the status of the tasks changes).
+An issue tracker in particular was selected because almost everyone has used a similar system before, be it through clinging Post-It!s to a wall or using digital systems like Trello, Atlassian JIRA, Asana, and Ding.io. This way, the user will already have a mental model for a simple issue tracker, and all focus can be on optimising the mechanics of the application for natural input. The primary goal has been to optimise the actual board interaction for \textbf{touch} input: the \textit{natural} way of moving physical cards around is to touch and drag them.
 
-How can a 2D interface optimised for the natural interface type \textit{touch} help boost productivity in a simple issue tracking system?
-
-Type of interface: somewhere in between a GUI and a NUI (the system has a GUI which is "optimised" for the natural interface touch, built for tablets with an existing touch screen. CLI only used for development :)
-
-NUI types: only touch (skin is unrelated to the domain, but gestures (e.g., with a kinect in a meeting room) is interesting, speech is unrelated unless the audience has no arms/ability to touch (disabled), gaze tracking is cool but unnecessary unless same as speech recognition, brain machine interface only relevant for heavily disabled users who are probably not in need of an issue tracker)
+The goal of the application and this report is to detemrmine how optimising a 2D interface for the natural interface type \textit{touch} can help boost productivity in a simple issue tracking system.
