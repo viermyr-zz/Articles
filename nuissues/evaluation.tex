@@ -1,53 +1,99 @@
 \section{Evaluation of the system in general}
 
+The previous section presented the system that is NUIssues, relevant models, and planning behind the system. This section evaluates the prototype by looking at \textcite[34]{wigdow-wixon:brave-nui-world:2011}'s guidelines for 2D spatial NUI design on how to support using 2D planar space, and some valuable outcomes and actionable events.
+
 \subsection{NUI guidelines}
 
-Direct manipulation techniques: always inline manipulation, no external prompts (except virtual keyboard on the iPad if no external keyboard is connected (which it hopefully is). Deletion option (with confirmation) on each issue.
+The only mandatory guideline for spatial 2D NUI design in \textcite[34]{wigdow-wixon:brave-nui-world:2011} is that the design must:
 
-Spatial 2D NUI guidelines: environment is optimised for touch through large elements (15mm in all directions, at least 5mm between elements on tiny tablet screen, all touch targets are equally sized),
+\begin{quote}
+"Create an environment that is optimized for touch in its layout, feedback, metaphors, and behaviors. Any item that responds to users' touch must be at least 15mm in size in all directions, and there must be at least 5 mm between minimally sized touch targets".
+\end{quote}
 
-does \textbf{not} allow users to change the layout because it is not needed, only one screen -> simple to position controls consistently (but consistent across swimlanes),
+NUIssues is true to this: on the target device, all \textit{cards} have more than 5 mm margin to the next card, and each card is (much) more than 15 mm in all directions. This is demonstrated in \ref{figure:standard-view}.
 
-spatial relationships: higher up means higher rank/priority/importance (it is a hierarchy), %todo: While not explicitly expressed, one may assume that the user's model of the system identifies issues higher up (with a lower index) as more important. After all, the grid layout imposes a hierachical style on the application. This interpretation is, however, left to the user.
+\begin{figure}[H]
+    \centerline{\includegraphics[scale=0.4]{images/nuissues-screenshots/01-default-all-swimlanes}}
+    \caption{Standard view of NUIssues with issues in all swimlanes}
+    \label{figure:standard-view}
+\end{figure}
 
-todo, doing, done are obviously positioned in that order (we read and work from left to right in the West),
+A key concern here is scrolling within a swimlane, which is not hinted at in any way other than blank space to the right of the cards inside the swimlans. While more content is hinted at through a fading swimlane, only users familiar with touch interfaces with scrolling may possibly understand how to manipulate this list. This weakness is a substantial flaw in the design that should be revised in future iterations of the design.
 
-Consistent design with only one page,
+The following points are \textit{guidelines}, listed under "Should" in \textcite[34]{wigdow-wixon:brave-nui-world:2011}.
 
-not a multi-user system (although it could have been with multi-touch recognition, which is not supported by ng-sortable but could be interesting, would not let more than one user change everyone's view, hard to indicate ownership, only uses flat/wide "navigation" for controls, no hierarchies (e.g., dropdowns),
+The design is consistent through the application, and the user is not allowed to customise the look of the app because the entire interface only consists of one single view.
 
-main view has only important controls and objects, but is not too sparse
+The spatial relationships of the issues have been considered:
 
-% TODO: remove this separator between NUI guidelines and commonsensical/practical stuff
+\begin{itemize}
+  \item In the Western world, we read from left to right, and thus the natural lifecycle of a card moves from left (\textit{todo}) to right, ultimately reaching \textit{done}.
+  \item While not explicitly expressed in the design (so that the user is left to interpret the significance of the positioning), one may assume that the user's model of the system identifies issues higher up (with a lower index) as more urgent or important. After all, the grid layout imposes a hierachical style on the application. This interpretation is, however, intentionally left to the user. 
+\end{itemize}
 
-Touch input: Fat fingers: no buttons (only large areas), large margins, everything can be dragged (no specific drag handles), may cause trouble with scrolling
+NUIssues is not designed to be a multi-user system, although changs one user makes to the board affect every user of the same instance. Multitouch support would be interesting, but counter-intuitive in an application specifically designed for a personal tablet computer.
 
-Sources of errors: Fat Fingers, multiple capture states, accidental activation (arm brush – doing nothing to prevent this as of yet), physical manipulation constraints, stolen capture, tabletop debris (it's an iPad – can't really get around that one)
+The main (and only) view has only the minimally required controls at any given time, and focuses on the \textit{content} of the application -- as does the user.
 
-Inter-user task coupling (irrelevant because no two users will use the system at the same time – but could implement this with sockets so that both users will always know what the current status is)
+Finally, direct manipulation has been actively considered: manipulation always happens inline (only the title in the prototype), with no external prompts except the virtual keyboard on the tablet unless a physical keyboard is connected -- which cannot be avoided.
+
+Each card can be deleted individually, and accidental occlusion is prevented by highlighting the entire card if it is about to be deleted. One thing to note is that \textit{only} using colour is not necessarily enough to indicate a status.
+
+\subsection{Potential sources of errors}
+
+There are several potential sources of error in a touch application. One of the most important, \textit{fat fingers} as defined by \textcite[73]{wigdow-wixon:brave-nui-world:2011} have been avoided to an extent by spacing and sizing elements in compliance with guidelines for 2D NUI design.
+
+Other error sources include multiple capture states, accidental activation (like brushing the screen with an arm), physical manipulation constraints, stolen capture, and tabletop debris, which are all very difficult to counter with no real control over the actual use or environment for using the application.
+
+\subsection{Other notes and models}
 
 All objects on screen (except \textit{swimlanes}) are interactive (editable, draggable, or sortable) through touch. Landing a finger on a card allows the user to drag the card to another position by sliding onto the closest new position and release the card to the new position by lifting the finger off the card. Landing a finger specifically on an editable text area on the card (the title) and immediately lifting the finger off, then editing the text with help of a keyboard. In this case a \textit{gesture} \parencite[157]{wigdow-wixon:brave-nui-world:2011} as an exit sequence would be helpful, but this is not implemented in the prototype.
 
-% TODO: Reference here
-INRC: \textbf{Identity} (move issue or start changing name always does just that), \textbf{Negation} (move back, change back always undoes – could look into gestures like slide to delete, slide back to restore item which is already a thing), \textbf{Reciprocal} (no undo button or anything like it, but could easily implement one), Commutative (changing name, then moving = moving, then changing name) % TODO: Look into and discuss possibilities for gestures and undo button
-
-\subsection{10 meaningful screens}
-
-Haha, 10. Each card state, hint, everything
-
-% TODO: Hint to more content (arrow or something at the end of swimlane)
+While the application does not support any gestures, looking at Piaget's concept of the INRC group \parencite[137]{wigdow-wixon:brave-nui-world:2011}. This group defines four properties:
 
 \begin{itemize}
-  \item Swimlanes
-  \item Single issues
-  \item Issue that has been modified
-  \item Issue that is marked for deletion (red: \textbf{occlusion}) 
-  \item Issue that is being moved (hint)
-  \item Issue that is being moved (escape sequence)
-  \item Issue that is being edited (title)
+  \item Identity, stating that performing equivalent actions (like moving an issue to another swimlane) should reliably do an equivalent action;
+  \item Negation, stating that it should be possible to return to the object's previous state after starting an action by performing the opposite action. For example, when dragging a card out of its place, backtracing to where the card was picked up from and releasing the card will invariably return it to its origin.
+  \item Reciprocal, stating that there are actions that return some aspect of the system to its original state. This is not implemented in NUIssues, but could take the form of an undo button.
+  \item Commutative, stating that changing the order of independent operations does not affect the end result. For example, changing the title of an issue and then moving its card to a different swimlane ultimately results in the same system state as first moving the card and then changing the title of the issue.
 \end{itemize}
 
-\subsection{Five actionable events}
+\subsection{Meaningful graphical states and actionable events}
+
+The entire application only has one single screen, but this view provides information in several different ways. Each state, or "view", will be provided in a screenshot, followed by a brief summary of the meaning of the state.
+
+\begin{figure}[H]
+    \centerline{\includegraphics[scale=0.4]{images/nuissues-screenshots/01-default-all-swimlanes}}
+    \caption{Default view of NUIssues with issues in all swimlanes}
+    \label{figure:meaningful-standard-view}
+\end{figure}
+
+Figure \ref{figure:meaningful-standard-view} shows the default expected set of views. This includes \textit{swimlanes} and \textit{individual cards representing issues}.
+
+\begin{figure}[H]
+    \centerline{\includegraphics[scale=0.4]{images/nuissues-screenshots/02-default-none-doing}}
+    \caption{No issues in the \textit{doing} swimlane}
+    \label{figure:meaningful-none-doing}
+\end{figure}
+
+Figure \ref{figure:meaningful-none-doing} shows the feedback in response to a swimlane being empty. This hinders confusion with the issues actually being \textit{loaded}, which hinders \textit{apparent} system response times from being an error source by differentiating the two states.
+
+\begin{figure}[H]
+    \centerline{\includegraphics[scale=0.4]{images/nuissues-screenshots/03-dragging-issue}}
+    \caption{Card being moved}
+    \label{figure:meaningful-card-moving}
+\end{figure}
+
+Figure \ref{figure:meaningful-card-moving} shows a card being moved, together with a hint indicating where the issue will land if released. The hinting always finds the closest position and indicates this position. Again, an escape sequence would be very useful here -- but Piaget's property of \textit{negation} is met.
+
+
+
+\begin{itemize}
+  \item Issue that is marked for deletion (red: \textbf{occlusion}) 
+  \item Issue that is being edited (title)
+  \item Hint to more content
+\end{itemize}
+
 
 Card deleted (realtime updates of the board to see what is going on?), but mostly "the time is X and we have Y tasks left to complete", or "we have way too many tasks in progress, please fix" (this falls under valuable outcome)
 
