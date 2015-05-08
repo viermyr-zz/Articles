@@ -49,16 +49,13 @@ If the user intends to edit textual content (only the title in NUIssues), it wou
 
 The system is single-user, so inter-user task coupling \autocite[39]{wigdow-wixon:brave-nui-world:2011} has not been explicitly addressed, but it is possible to evolve the system to support other forms of interfaces like touch walls or touch tables (or even just real-time updates for a project). 
 
-% TODO: Discuss fingerprint login (TUI!) and ethical issues with identifying someone/storing that type of information
-
 An issue that is not addressed in the proof of concept, but needs to be addressed in a full version of any issue tracking system is how one identifies users. In a touch-optimised system, it is preferable to avoid text input. Thus, one may look to how Apple identifies users on iPhone devices with fingerprint unlocks using a tangible user interface (TUI) \autocite{ishii-ullmer:tangible-bits-towards-seamless-interfaces-between-people-bits-and-atoms:1997}.
 
 Any natural type of user recognition imposes hardware requirements on the devices that will run the application, but should be available as an option if they are viable for the organisation and target audience. Other natural forms of user identification include face recognition and speech recognition. A regular password option should be present, however.
 
 Certain ethical concerns arise when identifying users. What can be stored on the device, what can be stored on a central server, and what should not be stored at all? Apple has already faced issues regarding their Touch ID system\footnote{\url{http://venturebeat.com/2014/12/28/chaos-computer-club-claims-it-can-reproduce-fingerprints-from-peoples-public-photos/}}, and these are questions for further research to answer.
 
-
-Gamification: no users (and no points)\dots % TODO: look into and discuss how gamification could be utilised in a task tracker (public scoreboards, points, badges)
+As far as gamification goes, there are no elements in the current implementation of NUIssues. However, applying the Mechanics, Dynamics, and Aesthetics (MDA) framework \parencite[107]{wigdow-wixon:brave-nui-world:2011} to an issue tracker could be interesting, and very simple if one implements issue assignment to individual users. For example, the system could calculate points based on number of solved issues or their complexity, display a semi-permanent leaderboard, and give the users badges based on their performance and activities.
 
 \subsection{Mental models in NUIssues}
 
@@ -78,11 +75,14 @@ The last model is built on the target audience's expected background, and can be
 
 \subsection{Behaviour models}
 
-Hick-Hyman Law: about reaction time when presented with a bunch of options, not really relevant as there are zero menus (for which the law is mostly being used)
+\textcite{mackenzie:motor-behaviour-models-for-human-computer-interaction:2003} introduces the Hick-Hyman Law which considers (average) response time when dealing with multi-option menus, and the Keystroke-Level Model (KLM), which considers with the user's time to actually complete their task. These are not considered further as NUIssues is a very simple application with no menus and only two core functions that build on existing knowledge from using the tablet that runs the application. One relevant aspect from the KLM, however, is the system response time factor: if the application runs on a slow physical server, the entire system will feel sluggish and slow to the user. 
 
-Keystroke-level model (KLM): Key stroking only relevant when adding or editing issues, pointing relevant because the finger moves, homing time minimised because of large, responsive controls, drawing minimised (and destinations hinted), mental operator, system response operator (hello Heroku) % TODO look into mental operator and System Response operator
+\textcite[4]{mackenzie:motor-behaviour-models-for-human-computer-interaction:2003} also introduces Buxton's \textit{3-state-model} for graphical input devices. While Buxton's model was defined for mouse interaction, the same "syntax" can be used to describe touch input. For example, in the scenario of dragging a card, the system has three states:
 
-Motor behaviour models: descriptive models: (state 0: waiting for stimuli) -> <finger down on issue handle (entire issue)> -> ((state 1: dragging issue) -> <finger up above legal area> -> (state 2: releasing "dropping" issue) -> (state 0: waiting for stimuli)) OR (<finger up from text> -> (state 4: editing text) -> <tap "save changes" control> -> (state 0: waiting for stimuli))
+\begin{enumerate}
+  \item State 0: No contact with input (screen) (idle). Enables entering state 1.
+  \item State 1: Contact with card and moving (dragging). Lifting the finger off the card releases the card and sends the system back to state 0.
+\end{enumerate}
 
 \subsection{Development process}
 
