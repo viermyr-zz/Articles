@@ -86,22 +86,26 @@ The last model is built on the target audience's expected background, and can be
 
 \subsection{Development process}
 
-Could have built something native for better performance and complete control of the environment, but takes far too much time and was beside the concept we set out to prove.
+NUIssues is developed as a web application with touch support, designed for an iPad 1/2/Mini. The question this project attempts to answer (how can optimising an issue tracker for touch boost productivity?) is not (very) concerned with different device sizes for the same device \textit{type}, so this was a simple way to prove the concept without complicating matters. Thus, the code base is rather clear -- but also very focused.
 
-Web client can be used by all types of devices (phones, tablets, touch tables, "smartboards", touch walls)
+Of course, building a native application would give access to higher performance and complete control of the environment. However, native code is often more complicated and can not be easily expanded to support more than one operating system. Unlike native applications, web applications with mobile support can be run on all modern device types, including phones, tablets, and web browsers – and can potentially also be used on a touch wall or touch table interface as long as the software can run a web browser that can execute modern JavaScript.
 
-No specific SDKs have been used, although several frameworks are used:
+No Software Development Kits (SDKs) specific to Natural User Interface design have been used, although the application leans on several frameworks and libraries commonly used in the MEAN (MongoDB, Express, AngularJS, Node.js) software stack:
+
 \begin{itemize}
-  \item AngularJS (front-end) with ng-sortable, bootstrap 3, custom CSS
-  \item Node.js (back-end) with several components (Express web server, Mongoose ODM (could just as easily have used relations), body-parser)
-  \item MongoDB document database (could just as easily have used relations for this simple use case)
-  \item Potential: JWT (or just cookies): save data inside the token
+  \item AngularJS is used as a front-end Model-View-Controller (MVC) framework with support for communicating efficiently with a server,
+  \item ng-sortable is an AngularJS module for building interactive lists with touch support -- in this case used to build the swimlanes,
+  \item Bootstrap 3 is used together with custom CSS to give the application a well-tested base design,
+  \item Node.js is a server runtime for JavaScript which runs the web server,
+  \item Express is the web server which runs on Node.js,
+  \item Mongoose is the Object-Document Mapper (ODM) that bridges Node.js and the MongoDB database (this project could just as easily have used relations, but documents are generally faster when working with JavaScript on the server),
+  \item Body-Parser is used to convert JSON-formatted plain text to objects and back on the server, and finally
+  \item MongoDB is the document database used to store issues
 \end{itemize}
 
+The live application is hosted on Heroku\footnote{\url{https://heroku.com}}, which is a free host for Node.js (and other) projects.
 
-
-
-\subsection{Known bugs}
+\subsection{Known bugs in the current implementation}
 
 \begin{itemize}
   \item It is nearly impossible to grab the bottommost issue that lies beneath the "fade out" overlay over the swimlane in a full swimlane
