@@ -21,7 +21,7 @@ An issue tracker in particular was selected because almost everyone has used a s
 
 Importantly, an issue tracker also lends itself to a highly interactive environment where almost everything can be moved to let the user customise the layout. This seems to be optimal conditions for a small proof of concept on touch optimisation.
 
-From a software integration perspective, it is clear that visualising something as integral to an organisation as \textit{tasks} in a clear way that provides quick insight into the state of a project will be very helpful. Given a supportive Application Programming Interface (API), should also be a relatively simple task to integrate the application with existing issue tracking systems in order to provide a more natural interface for managing tasks.
+From a software integration perspective, it is clear that visualising something as integral to an organisation as \textit{tasks} in a clear way that provides quick insight into the state of a project will be very helpful. Given a supportive Application Programming Interface (API), it should also be a relatively simple task to integrate the application with existing issue tracking systems in order to provide a more natural interface for managing tasks.
 
 \subsection{Scope and sketch}
 
@@ -41,7 +41,7 @@ Figure \ref{figure:ipad-mockup} shows a simple initial mockup for the applicatio
     \label{figure:ipad-default-simple-screenshots}  
 \end{figure}
 
-NUIssues \textbf{only} supports \textit{touch} as natural input. While tracking changes on a user's skin and gaze tracking seem unrelated to the domain, there are several other to explore in future research: Gesture tracking, for instance, makes it possible to expand the application to run on interfaces like \textit{touch walls}. Adding speech recognition or building a Brain Machine Interface can be relevant if the system is to be used by people who are physically incapable of interacting with a touch interface. Of course, all new interface type implementations add to the complexity of the application and makes it harder to keep the GUI optimised for a single type like touch. There are also obvious development costs related to expanding the software.
+NUIssues \textbf{only} supports \textit{touch} as natural input. While tracking changes on a user's skin and gaze tracking seem unrelated to the domain, there are several other to explore in future research: Gesture tracking, for instance, makes it possible to expand the application to run on interfaces like \textit{touch walls}. Adding speech recognition or building a Brain Machine Interface can be relevant if the system is to be used by people who are physically incapable of interacting with a touch interface. Of course, all new interface type implementations add to the complexity of the application and make it harder to keep the GUI optimised for a single type like touch. There are also obvious development costs related to expanding the software.
 
 The interface is designed only for Apple iPad 1/2/Mini, but one may easily write responsive CSS to support more types of devices. This allows bringing the very simple interface to natural interfaces like \textit{touch walls}, \textit{touch tables}, in addition to smartphones and desktop computers. The interface is designed to be used when sitting down, although the application can certainly merely be opened if the user's intent is to grok the project's state while on the move.
 
@@ -59,7 +59,7 @@ As far as gamification goes, there are no elements in the current implementation
 
 \subsection{Mental models in NUIssues}
 
-\textcite{wilson-rutherford:mental-models-theory-and-application-in-human-factors:1989} introduces the notion of \textit{mental models} within Human-Computer Interaction (HCI), defined as any human's psychological representation (and implied expectations for) any given concept or object. A person will build a mental model for themselves, and for any object they interact with. They introduce a framework for the design phase of any computer system, with four distinctly different models at play.
+\textcite{wilson-rutherford:mental-models-theory-and-application-in-human-factors:1989} introduces the notion of \textit{mental models} within Human-Computer Interaction (HCI), defined as any human's psychological representation (and implied expectations for) any given concept or object. A person will build a mental model for themselves, and for any object they interact with. They introduce a framework for the design phase of any computer system, with six distinctly different models at play.
 
 First, one needs to define a \textit{target system}. In this case, the target system is the NUIssues system and interface.
 
@@ -69,15 +69,13 @@ Fourth, the target system projects a \textit{system image}, which is the impleme
 
 Fifth, the \textit{user} immediately builds a mental model of the system of the system based on the \textit{system image}. This model is the basis for what the user expects the system to be able to do, mostly based on previous experience with similar systems but only based on the hints given by the application.
 
-Last, the \textit{designer has a mental model of the user's model}, in which the designer attempts to guess what the user's mental model of the system image will be like.
-
-The last model is built on the target audience's expected background, and can be built by considering similar applications the user can be expected to have interacted with in the past. In this case, an obvious system is that of sticky notes and checklists to track tasks, which almost everyone has used at some point. Thus, these graphical representations of issues may be used as metaphors in the system. Further, the user can have come across several digital issue trackers optimised for web like \footnote{\url{https://trello.com}}, Atlassian JIRA\footnote{\url{https://jira.atlassian.com/secure/Dashboard.jspa}}, Ding\footnote{\url{https://ding.io}}, ServiceNow\footnote{\url{http://www.servicenow.com/}}, and IBM Notes\footnote{\url{http://www-03.ibm.com/software/products/en/ibmnotes}}. Thus, using common, good metaphors and following best practises is important when designing a system for use (which is, indeed, \textit{any} system).
+Last, the \textit{designer has a mental model of the user's model}, in which the designer attempts to guess what the user's mental model of the system image will be like. This last model is based on the target audience's expected background, and can be built by considering similar applications the user can be expected to have interacted with in the past. In this case, an obvious system is that of sticky notes and checklists to track tasks, which almost everyone has used at some point. Thus, these graphical representations of issues may be used as metaphors in the system. Further, the user can have come across several digital issue trackers optimised for web like Trello\footnote{\url{https://trello.com}}, Atlassian JIRA\footnote{\url{https://jira.atlassian.com/secure/Dashboard.jspa}}, Ding\footnote{\url{https://ding.io}}, ServiceNow\footnote{\url{http://www.servicenow.com/}}, and IBM Notes\footnote{\url{http://www-03.ibm.com/software/products/en/ibmnotes}}. Thus, using common, good metaphors and following best practises is important when designing a system for use (which is, indeed, \textit{any} system).
 
 \subsection{Behaviour models}
 
 \textcite{mackenzie:motor-behaviour-models-for-human-computer-interaction:2003} introduces the Hick-Hyman Law which considers (average) response time when dealing with multi-option menus, and the Keystroke-Level Model (KLM), which considers with the user's time to actually complete their task. These are not considered further as NUIssues is a very simple application with no menus and only two core functions that build on existing knowledge from using the tablet that runs the application. One relevant aspect from the KLM, however, is the system response time factor: if the application runs on a slow physical server, the entire system will feel sluggish and slow to the user. 
 
-\textcite[4]{mackenzie:motor-behaviour-models-for-human-computer-interaction:2003} also introduces Buxton's \textit{3-state-model} for graphical input devices. While Buxton's model was defined for mouse interaction, the same "syntax" can be used to describe touch input. For example, in the scenario of dragging a card, the system has three states:
+\textcite[4]{mackenzie:motor-behaviour-models-for-human-computer-interaction:2003} also introduces Buxton's \textit{3-state-model} for graphical input devices. This "syntax" can be used to describe touch input. For example, in the scenario of dragging a card, the system has two states:
 
 \begin{enumerate}
   \item State 0: No contact with input (screen) (idle). Enables entering state 1.
@@ -86,9 +84,9 @@ The last model is built on the target audience's expected background, and can be
 
 \subsection{Development process}
 
-NUIssues is developed as a web application with touch support, designed for an iPad 1/2/Mini. The question this project attempts to answer (how can optimising an issue tracker for touch boost productivity?) is not (very) concerned with different device sizes for the same device \textit{type}, so this was a simple way to prove the concept without complicating matters. Thus, the code base is rather clear -- but also very focused.
+NUIssues is developed as a web application with touch support, designed for an iPad 1/2/Mini. The question this project attempts to answer (how can optimising an issue tracker for touch boost productivity?) is not (very) concerned with different device sizes for the same device \textit{type}, so this was a simple way to prove the concept without complicating matters. Thus, the code base is rather simple -- but also very focused.
 
-Of course, building a native application would give access to higher performance and complete control of the environment. However, native code is often more complicated and can not be easily expanded to support more than one operating system. Unlike native applications, web applications with mobile support can be run on all modern device types, including phones, tablets, and web browsers – and can potentially also be used on a touch wall or touch table interface as long as the software can run a web browser that can execute modern JavaScript.
+Of course, building a native application would give access to higher performance and complete control of the environment. However, native code is often more complicated and can not be easily expanded to support more than one operating system. Unlike native applications, web applications with mobile support can be run on all modern device types, including phones, tablets, and desktop machines – and can potentially also be used on a touch wall or touch table interface as long as the software can run a web browser that can execute modern JavaScript.
 
 No Software Development Kits (SDKs) specific to Natural User Interface design have been used, although the application leans on several frameworks and libraries commonly used in the MEAN (MongoDB, Express, AngularJS, Node.js) software stack:
 
@@ -100,7 +98,7 @@ No Software Development Kits (SDKs) specific to Natural User Interface design ha
   \item Express is the web server which runs on Node.js,
   \item Mongoose is the Object-Document Mapper (ODM) that bridges Node.js and the MongoDB database (this project could just as easily have used relations, but documents are generally faster when working with JavaScript on the server),
   \item Body-Parser is used to convert JSON-formatted plain text to objects and back on the server, and finally
-  \item MongoDB is the document database used to store issues
+  \item MongoDB is the document database used to store issues.
 \end{itemize}
 
 The front-end and back-end projects communicate using the Hypertext Transfer Protocol (HTTP) following the architectural style REpresentational State Transfer (REST). A sample implementation of creating an issue is implemented as follows:
@@ -112,7 +110,7 @@ service.create = function(issue) {
 };
 \end{lstlisting}
 
-Server-side controller exposing a REST endpoint: at HTTP POST <host>/api/issues\textbf{\textit{nuissues/node/controllers/issues.js}}
+Server-side controller exposing a REST endpoint: at HTTP POST \textit{host}/api/issues \textbf{\textit{nuissues/node/controllers/issues.js}}
 \begin{lstlisting}
 router.post('/', function(req, res) {
 	var issue = new Issue(req.body);
@@ -162,12 +160,12 @@ This code also shows the HTML implementation of the fade-out effect at the botto
 }
 \end{lstlisting}
 
-The live application is hosted on Heroku\footnote{\url{https://heroku.com}}, which is a free host for Node.js (and other) projects.
+The live application is hosted on Heroku\footnote{\url{https://heroku.com}}, which is a platform as a service for Node.js (and other) projects with a free option.
 
 \subsection{Known bugs in the current implementation}
 
 There is at present time one known bug in the prototype implementation:
 
 \begin{itemize}
-  \item It is nearly impossible to grab the bottommost issue that lies beneath the "fade out" overlay over the swimlane in a full swimlane
+  \item It is nearly impossible to grab the bottommost issue that lies beneath the "fade out" overlay over the bottom of the swimlane.
 \end{itemize}
